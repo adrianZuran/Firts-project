@@ -1,37 +1,317 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width= , initial-scale= ">
-    <title>First Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrian Trinata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        .containerImg {
-            margin: 1rem 0 1rem 0;
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+        
+        * {
+            font-family: 'Ubuntu', sans-serif;
+        }
+        
+        /* Updated to Ubuntu dark theme background */
+        .gradient-bg {
+            background: linear-gradient(135deg, #2C001E 0%, #1A1A1A 50%, #300A24 100%);
+            background-size: 400% 400%;
+            animation: subtleShift 15s ease infinite;
+        }
+        
+        /* More subtle animation for Ubuntu aesthetic */
+        @keyframes subtleShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            border: 1px solid #3D3D3D;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 84, 32, 0.2);
+            border-color: #E95420;
+        }
+        
+        .music-link {
+            transition: all 0.3s ease;
+        }
+        
+        .music-link:hover {
+            transform: scale(1.02);
+            background: linear-gradient(45deg, #E95420, #FF6B35) !important;
+        }
+
+        .main-container {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            overflow: hidden;
+            background: #2C001E;
+        }
+        
+        .section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+        }
+        
+        /* Replaced floating emoji with Ubuntu-style geometric elements */
+        .ubuntu-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .ubuntu-dot {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(233, 84, 32, 0.1);
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .ubuntu-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 4px;
+            background: #E95420;
+            border-radius: 50%;
+            animation: pulse 3s ease infinite;
+        }
+        
+        .ubuntu-dot:nth-child(1) {
+            width: 20px;
+            height: 20px;
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .ubuntu-dot:nth-child(2) {
+            width: 30px;
+            height: 30px;
+            top: 70%;
+            right: 15%;
+            animation-delay: 3s;
+        }
+        
+        .ubuntu-dot:nth-child(3) {
+            width: 15px;
+            height: 15px;
+            bottom: 20%;
+            left: 25%;
+            animation-delay: 6s;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .ubuntu-panel {
+            background: linear-gradient(145deg, #3C3C3C, #2A2A2A);
+            border: 1px solid #4A4A4A;
+            border-radius: 8px;
+        }
+        
+        .ubuntu-header {
+            background: linear-gradient(145deg, #4A4A4A, #3A3A3A);
+            border-bottom: 1px solid #E95420;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .window-control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .close { background: #FF5F56; }
+        .minimize { background: #FFBD2E; }
+        .maximize { background: #27CA3F; }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 1fr);
+            }
         }
     </style>
 </head>
-<body>
-    <h1>Mene Warung Kita</h1>
-    <div class="containerImg">
-        <img width="50%" src="public/img/warungImg.jpg" alt="Warung Kita">
-        <p style="margin-top: 1rem;">Sebelum Melakukan pemesanan mohon dibaca dengan baik atau ditanyakan kewaiters</p>
+<body class="overflow-hidden bg-gray-900">
+    <div class="main-container">
+        <!-- Section 1: Header/Nama -->
+        <section class="section gradient-bg">
+            <div class="ubuntu-elements">
+                <div class="ubuntu-dot"></div>
+                <div class="ubuntu-dot"></div>
+                <div class="ubuntu-dot"></div>
+            </div>
+            <div class="text-center text-white z-10 relative ubuntu-panel p-8 max-w-md">
+                <!-- Added Ubuntu-style window controls -->
+                <div class="window-controls justify-center">
+                    <div class="window-control close"></div>
+                    <div class="window-control minimize"></div>
+                    <div class="window-control maximize"></div>
+                </div>
+                <div class="ubuntu-header p-4 rounded-t-lg mb-4">
+                    <h1 class="text-2xl md:text-4xl font-bold mb-2 text-orange-400">
+                        Adrian Trinata
+                    </h1>
+                    <p class="text-sm md:text-base font-light text-gray-300">
+                        D3 TEKNIK INFORMATIKA
+                    </p>
+                </div>
+                <div class="text-orange-400">
+                    <i class="fab fa-ubuntu text-3xl"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Foto -->
+        <section class="section gradient-bg">
+            <div class="ubuntu-elements">
+                <div class="ubuntu-dot"></div>
+                <div class="ubuntu-dot"></div>
+                <div class="ubuntu-dot"></div>
+            </div>
+            <div class="text-center z-10 relative">
+                <div class="card-hover ubuntu-panel p-6 max-w-sm">
+                    <div class="window-controls">
+                        <div class="window-control close"></div>
+                        <div class="window-control minimize"></div>
+                        <div class="window-control maximize"></div>
+                    </div>
+                    <div class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 rounded-lg overflow-hidden border-2 border-orange-400 shadow-xl">
+                        <img src="/public/img/Porto.jpeg" 
+                             alt="Profile Photo" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <h2 class="text-lg md:text-xl font-bold text-orange-400 mb-2">About-me</h2>
+                    <p class="text-gray-300 text-sm">
+                        I am studying at Politeknik Elektronika Negeri Surabaya (PENS).                   </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: List Usia & Hobi -->
+        <section class="section gradient-bg">
+            <div class="ubuntu-elements">
+                <div class="ubuntu-dot"></div>
+                <div class="ubuntu-dot"></div>
+                <div class="ubuntu-dot"></div>
+            </div>
+            <div class="z-10 relative w-full max-w-md">
+                <div class="ubuntu-panel p-6">
+                    <div class="window-controls">
+                        <div class="window-control close"></div>
+                        <div class="window-control minimize"></div>
+                        <div class="window-control maximize"></div>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-orange-400 mb-4">Cd personal-info</h2>
+                    <div class="space-y-3">
+                        <!-- Usia -->
+                        <div class="card-hover bg-gray-800 rounded-lg p-4 border border-gray-600">
+                            <div class="flex items-center">
+                                <i class="fas fa-terminal text-lg text-orange-400 mr-3"></i>
+                                <div>
+                                    <h3 class="text-sm font-medium text-gray-300">Age:</h3>
+                                    <p class="text-lg font-bold text-white">19 years</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Hobi -->
+                        <div class="card-hover bg-gray-800 rounded-lg p-4 border border-gray-600">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-list text-lg text-orange-400 mr-3"></i>
+                                <h3 class="text-sm font-medium text-gray-300">Hobbies:</h3>
+                            </div>
+                            <div class="grid grid-cols-1 gap-2 text-sm">
+                                <div class="flex items-center text-white">
+                                    <span class="text-orange-400 mr-2">></span>
+                                    Programming
+                                </div>
+                                <div class="flex items-center text-white">
+                                    <span class="text-orange-400 mr-2">></span>
+                                    Watching Anime
+                                </div>
+                                <div class="flex items-center text-white">
+                                    <span class="text-orange-400 mr-2">></span>
+                                    listen to music
+                                </div>
+                                <div class="flex items-center text-white">
+                                    <span class="text-orange-400 mr-2">></span>
+                                    Gaming
+                                </div>
+                                <div class="flex items-center text-white">
+                                    <span class="text-orange-400 mr-2">></span>
+                                    Reading Webtoon
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Musik Kesukaan -->
+        <section class="section gradient-bg">
+            <div class="ubuntu-elements">
+                <div class="ubuntu-dot"></div>
+                <div class="ubuntu-dot"></div>
+                <div class="ubuntu-dot"></div>
+            </div>
+            <div class="text-center z-10 relative w-full max-w-md">
+                <div class="ubuntu-panel p-6">
+                    <div class="window-controls">
+                        <div class="window-control close"></div>
+                        <div class="window-control minimize"></div>
+                        <div class="window-control maximize"></div>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-orange-400 mb-4">Cd Music/favorites</h2>
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="https://music.youtube.com/playlist?list=PLVtB-JJqRRutCR8NnaHDgslcur8bPydIR" 
+                           target="_blank" 
+                           class="music-link card-hover bg-gray-800 rounded-lg p-4 text-white block border border-gray-600">
+                            <i class="fab fa-youtube text-orange-400 text-lg mb-2"></i>
+                            <h3 class="text-xs font-medium">Work</h3>
+                        </a>
+                        
+                        <a href="https://music.youtube.com/watch?v=MiExw8V0dVI&list=PLFJgtYtHAAtMWAIGQqPQe6JzYtqsdJ8jl" 
+                           target="_blank" 
+                           class="music-link card-hover bg-gray-800 rounded-lg p-4 text-white block border border-gray-600">
+                            <i class="fab fa-youtube text-orange-400 text-lg mb-2"></i>
+                            <h3 class="text-xs font-medium">Happines</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-    <ol>
-        <li>Makanan
-          <ul>
-            <li>Gulai iga sapi</li>
-            <li>Nasi Goreng Gila</li>
-            <li>Nasi Bakar Komplit</li>
-          </ul>
-        </li>
-        <li>Makanan
-          <ul>
-            <li>Lemon Tea</li>
-            <li>Jus Alpukat</li>
-            <li>Es Teh</li>
-          </ul>
-        </li>
-      </ol>
-    <h1>Menu Cafe kita Lengkap <a href="#">Download</a></h1>
 </body>
 </html>
